@@ -1,1 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours & Activities | Nexus DMC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+        }
 
+        /* Nexus DMC Header Style */
+        .nexus-header {
+            background: #1f2937;
+            border-bottom: 1px solid #374151;
+        }
+
+        .nexus-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .nexus-nav-link {
+            color: #d1d5db;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .nexus-nav-link:hover {
+            color: white;
+            background: #374151;
+        }
+
+        .nexus-nav-link i {
+            font-size: 0.875rem;
+        }
+
+        .dropdown-icon {
+            font-size: 0.625rem;
+            margin-left: 0.25rem;
+        }
+
+        /* Hero Section with Background Image */
+        .hero-section {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            overflow: hidden;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=2021&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(59, 130, 246, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Compact Widget Cards */
+        .widget-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .widget-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .widget-body {
+            padding: 0.75rem;
+            min-height: 180px;
+        }
+
+        .destination-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 0.2rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Compact Tour Widgets */
+        .tour-widget-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        /* Activities Widget Container */
+        .activities-widget-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1280px) {
+            .widget-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .widget-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .widget-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .nexus-logo {
+                height: 32px;
+            }
+
+            .hero-section {
+                min-height: 250px;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Nexus DMC Header -->
+    <header class="nexus-header sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-14">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <img src="nexus-logo.png" alt="Nexus DMC" class="nexus-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="hidden items-center gap-2 text-white">
+                        <div class="flex gap-0.5">
+                            <div class="w-1.5 h-6 bg-blue-500 rounded"></div>
+                            <div class="w-1.5 h-6 bg-green-500 rounded"></div>
+                            <div class="w-1.5 h-6 bg-yellow-500 rounded"></div>
+                            <div class="w-1.5 h-6 bg-red-500 rounded"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm leading-tight">NEXUS DMC</span>
+                            <span class="text-xs text-gray-400">ONE WORLD.ONE DMC™</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="desktop-nav hidden lg:flex items-center gap-1">
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-users"></i>
+                        Manage Accounts
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        Products
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-umbrella-beach"></i>
+                        Holidays
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        Proposals
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-box-open"></i>
+                        Manage Products
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        Bookings
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-check-circle"></i>
+                        Operations
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        Reports
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <a href="#" class="nexus-nav-link">
+                        <i class="fas fa-th"></i>
+                        Settings
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                </nav>
+
+                <!-- Right Side -->
+                <div class="flex items-center gap-4">
+                    <a href="#" class="nexus-nav-link hidden md:flex">
+                        <i class="fas fa-search"></i>
+                        Lookup
+                    </a>
+                    <button class="lg:hidden text-white text-xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section class="hero-section">
+        <div class="hero-bg-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">
+                Tours & Activities
+            </h1>
+            <p class="text-blue-100 text-lg drop-shadow-md">
+                Powered by GetYourGuide - Book experiences worldwide
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+
+        <!-- UK Activities Widget -->
+        <div class="activities-widget-container">
+            <h2 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <i class="fas fa-list text-blue-600"></i>
+                Featured UK Activities
+            </h2>
+            <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-location-id="169017" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="6" data-gyg-partner-id="VV730HT">
+                <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/united-kingdom-l169017/">GetYourGuide</a></span>
+            </div>
+        </div>
+
+        <!-- Featured Tour Widgets -->
+        <section class="mb-8">
+            <h2 class="section-title">
+                <div class="section-icon bg-purple-600">
+                    <i class="fas fa-star"></i>
+                </div>
+                Featured Tours & Cities
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- London Tour Availability -->
+                <div class="tour-widget-card">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-crown text-purple-600"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm">London Experience</h3>
+                        <span class="ml-auto text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">Popular</span>
+                    </div>
+                    <div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="174429" data-gyg-locale-code="en-US" data-gyg-currency="INR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="VV730HT">
+                        <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/london-l57/">GetYourGuide</a></span>
+                    </div>
+                </div>
+
+                <!-- Singapore City Widget -->
+                <div class="tour-widget-card">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-city text-blue-600"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm">Singapore City</h3>
+                        <span class="ml-auto text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">New</span>
+                    </div>
+                    <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                </div>
+
+                <!-- Additional Featured - Dubai -->
+                <div class="tour-widget-card">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-building text-amber-600"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm">Dubai</h3>
+                        <span class="ml-auto text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded">Trending</span>
+                    </div>
+                    <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="38" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EUROPE SECTION -->
+        <section class="mb-8">
+            <h2 class="section-title">
+                <div class="section-icon bg-blue-600">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                Europe
+            </h2>
+
+            <div class="widget-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+                <!-- United Kingdom -->
+                <div class="widget-card">
+                    <div class="widget-header">
+                        <i class="fas fa-crown text-xs"></i>
+                        <span>United Kingdom</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All UK
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169017" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- London -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
+                        <i class="fas fa-city text-xs"></i>
+                        <span>London</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #f3e8ff; color: #6d28d9;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Capital
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="57" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- France -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <i class="fas fa-wine-glass text-xs"></i>
+                        <span>France</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #d1fae5; color: #059669;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All France
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169008" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Spain -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <i class="fas fa-sun text-xs"></i>
+                        <span>Spain</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fef3c7; color: #d97706;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Spain
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169003" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Greece -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                        <i class="fas fa-umbrella-beach text-xs"></i>
+                        <span>Greece</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #cffafe; color: #0891b2;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Islands
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169010" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Turkey -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+                        <i class="fas fa-mosque text-xs"></i>
+                        <span>Turkey</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fce7f3; color: #db2777;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Turkey
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169039" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Europe (All) -->
+                <div class="widget-card col-span-2 md:col-span-2 xl:col-span-2">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                        <i class="fas fa-globe-europe text-xs"></i>
+                        <span>All Europe</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #e0e7ff; color: #4f46e5;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Explore All European Destinations
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="207848" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASIA SECTION -->
+        <section class="mb-8">
+            <h2 class="section-title">
+                <div class="section-icon bg-rose-500">
+                    <i class="fas fa-torii-gate"></i>
+                </div>
+                Asia
+            </h2>
+
+            <div class="widget-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+                <!-- Bali -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <i class="fas fa-leaf text-xs"></i>
+                        <span>Bali</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #d1fae5; color: #059669;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Indonesia
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="347" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Thailand -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <i class="fas fa-spa text-xs"></i>
+                        <span>Thailand</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fef3c7; color: #d97706;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Thailand
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169040" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Singapore -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                        <i class="fas fa-building text-xs"></i>
+                        <span>Singapore</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fee2e2; color: #dc2626;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Lion City
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="170" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- India -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                        <i class="fas fa-om text-xs"></i>
+                        <span>India</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #ffedd5; color: #ea580c;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All India
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169037" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Malaysia -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                        <i class="fas fa-building text-xs"></i>
+                        <span>Malaysia</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #cffafe; color: #0891b2;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Malaysia
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169045" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Vietnam -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                        <i class="fas fa-dragon text-xs"></i>
+                        <span>Vietnam</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fee2e2; color: #b91c1c;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Vietnam
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169193" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MIDDLE EAST SECTION -->
+        <section class="mb-8">
+            <h2 class="section-title">
+                <div class="section-icon bg-amber-600">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                Middle East
+            </h2>
+
+            <div class="widget-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+                <!-- UAE -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+                        <i class="fas fa-building-columns text-xs"></i>
+                        <span>UAE</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fef3c7; color: #b45309;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Dubai & Abu Dhabi
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169038" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Saudi Arabia -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);">
+                        <i class="fas fa-kaaba text-xs"></i>
+                        <span>Saudi Arabia</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #dcfce7; color: #15803d;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Saudi
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169036" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AMERICAS SECTION -->
+        <section class="mb-8">
+            <h2 class="section-title">
+                <div class="section-icon bg-indigo-600">
+                    <i class="fas fa-flag-usa"></i>
+                </div>
+                Americas
+            </h2>
+
+            <div class="widget-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+                <!-- New York -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);">
+                        <i class="fas fa-city text-xs"></i>
+                        <span>New York</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #dbeafe; color: #1e40af;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Big Apple
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="59" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- California -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);">
+                        <i class="fas fa-sun text-xs"></i>
+                        <span>California</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #ffedd5; color: #c2410c;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Golden State
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="560" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Florida -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);">
+                        <i class="fas fa-umbrella-beach text-xs"></i>
+                        <span>Florida</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #cffafe; color: #0e7490;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Sunshine State
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="84" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Washington -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+                        <i class="fas fa-monument text-xs"></i>
+                        <span>Washington</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #ede9fe; color: #6d28d9;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            DC & State
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="62" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AFRICA & OCEANIA SECTION -->
+        <section class="mb-8">
+            <h2 class="section-title">
+                <div class="section-icon bg-emerald-600">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                Africa & Oceania
+            </h2>
+
+            <div class="widget-grid grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+                <!-- Kenya -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                        <i class="fas fa-paw text-xs"></i>
+                        <span>Kenya</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fee2e2; color: #b91c1c;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            Safari
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="169122" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+
+                <!-- Australia -->
+                <div class="widget-card">
+                    <div class="widget-header" style="background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);">
+                        <i class="fas fa-kangaroo text-xs"></i>
+                        <span>Australia</span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="destination-tag" style="background: #fef9c3; color: #ca8a04;">
+                            <i class="fas fa-map-marker-alt text-xs"></i>
+                            All Australia
+                        </div>
+                        <div data-gyg-href="https://widget.getyourguide.com/default/city.frame" data-gyg-location-id="168949" data-gyg-locale-code="en-US" data-gyg-widget="city" data-gyg-partner-id="VV730HT"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 border-t border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center gap-3 mb-3 md:mb-0">
+                    <img src="nexus-logo.png" alt="Nexus DMC" class="h-6 opacity-80" onerror="this.style.display='none'">
+                    <span class="text-gray-400 text-sm">© 2026 Nexus DMC. All rights reserved.</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-400 text-sm">
+                    <span>Tours powered by</span>
+                    <span class="font-semibold text-white">GetYourGuide</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GetYourGuide Widget Script -->
+    <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="VV730HT"></script>
+
+</body>
+</html>
