@@ -9,195 +9,148 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Plus Jakarta Sans',sans-serif;background:#000;color:#fff;min-height:100vh}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0f2f7;color:#0d1b3e;min-height:100vh}
 
     /* ── TOPBAR ── */
-    .topbar{background:#000;border-bottom:1px solid rgba(255,255,255,.1);
+    .topbar{background:#fff;border-bottom:1px solid #dde2ef;
       height:54px;display:flex;align-items:center;justify-content:space-between;
-      padding:0 24px;position:sticky;top:0;z-index:100}
+      padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.05)}
     .topbar-left{display:flex;align-items:center;gap:12px}
     .topbar-logo{height:30px;width:auto}
-    .topbar-title{font-size:.82rem;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.3px}
+    .topbar-title{font-size:.82rem;font-weight:700;color:#6b7a99;letter-spacing:.3px}
     .topbar-right{display:flex;align-items:center;gap:8px}
     .back-link{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;
-      border:1px solid rgba(255,255,255,.15);border-radius:8px;color:rgba(255,255,255,.7);
-      font-size:.75rem;font-weight:700;text-decoration:none;transition:.15s;background:transparent}
-    .back-link:hover{border-color:#00a8e8;color:#00a8e8}
-    .gyg-badge{font-size:.68rem;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:5px}
-    .gyg-badge span{color:rgba(255,255,255,.6);font-weight:700}
+      border:1px solid #dde2ef;border-radius:8px;color:#6b7a99;
+      font-size:.75rem;font-weight:700;text-decoration:none;transition:.15s;background:#fff}
+    .back-link:hover{border-color:#00a8e8;color:#00a8e8;background:#f0f8ff}
+    .gyg-badge{font-size:.68rem;color:#9ba7c0;display:flex;align-items:center;gap:5px}
+    .gyg-badge span{color:#6b7a99;font-weight:700}
 
     /* ── HERO ── */
-    .page-hero{background:#000;padding:28px 24px 22px;border-bottom:1px solid rgba(255,255,255,.07);
+    .page-hero{background:#fff;padding:28px 24px 22px;border-bottom:1px solid #dde2ef;
       position:relative;overflow:hidden}
     .page-hero::before{content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 600px 300px at 70% 50%,rgba(0,168,232,.12),transparent 65%),
-                 radial-gradient(ellipse 300px 200px at 0% 100%,rgba(230,126,34,.08),transparent 60%)}
+      background:radial-gradient(ellipse 600px 300px at 70% 50%,rgba(0,168,232,.06),transparent 65%),
+                 radial-gradient(ellipse 300px 200px at 0% 100%,rgba(230,126,34,.04),transparent 60%)}
     .hero-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto}
-    .hero-eyebrow{font-size:.63rem;font-weight:700;color:rgba(0,168,232,.8);
+    .hero-eyebrow{font-size:.63rem;font-weight:700;color:#00a8e8;
       text-transform:uppercase;letter-spacing:1.8px;margin-bottom:8px}
-    .hero-title{font-size:1.9rem;font-weight:900;color:#fff;line-height:1.1;
+    .hero-title{font-size:1.9rem;font-weight:900;color:#0d1b3e;line-height:1.1;
       margin-bottom:8px;letter-spacing:-.3px}
     .hero-title em{color:#e67e22;font-style:normal}
-    .hero-sub{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.6;max-width:560px;margin-bottom:16px}
+    .hero-sub{font-size:.8rem;color:#6b7a99;line-height:1.6;max-width:560px;margin-bottom:16px}
     .hero-tags{display:flex;flex-wrap:wrap;gap:8px}
     .hero-tag{font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:20px;
-      border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);background:rgba(255,255,255,.05)}
+      border:1px solid #dde2ef;color:#6b7a99;background:#f5f7fb}
 
     /* ── MAIN CONTENT AREA ── */
     .content-wrap{max-width:1400px;margin:0 auto;padding:24px}
 
     /* ── SECTION HEADERS ── */
     .section-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;
-      font-size:.75rem;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.6px}
+      font-size:.75rem;font-weight:900;color:#0d1b3e;text-transform:uppercase;letter-spacing:.6px}
     .section-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;
       justify-content:center;font-size:.75rem;flex-shrink:0}
-    .section-icon.bg-purple-600{background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.3);color:#a78bfa}
-    .section-icon.bg-blue-600{background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);color:#60a5fa}
-    .section-icon.bg-green-600{background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.3);color:#34d399}
-    .section-icon.bg-orange-500{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.25);color:#fbbf24}
-    .section-icon.bg-red-600{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);color:#f87171}
-    .section-icon.bg-teal-600{background:rgba(20,184,166,.15);border:1px solid rgba(20,184,166,.25);color:#2dd4bf}
+    .section-icon.bg-purple-600{background:#f5f3ff;border:1px solid #ddd6fe;color:#7c3aed}
+    .section-icon.bg-blue-600{background:#eff6ff;border:1px solid #bfdbfe;color:#2563eb}
+    .section-icon.bg-green-600{background:#f0fdf4;border:1px solid #86efac;color:#16a34a}
+    .section-icon.bg-orange-500{background:#fff7ed;border:1px solid #fed7aa;color:#ea580c}
+    .section-icon.bg-red-600{background:#fff1f2;border:1px solid #fecdd3;color:#e11d48}
+    .section-icon.bg-teal-600{background:#f0fdfa;border:1px solid #99f6e4;color:#0d9488}
 
     /* ── WIDGET CARDS ── */
-    .widget-card{background:#111;border-radius:10px;overflow:hidden;
-      border:1px solid rgba(255,255,255,.1)}
+    .widget-card{background:#fff;border-radius:10px;overflow:hidden;
+      border:1px solid #dde2ef;box-shadow:0 2px 6px rgba(0,0,0,.04)}
     .widget-header{padding:8px 12px;font-weight:700;font-size:.75rem;
-      display:flex;align-items:center;gap:6px;color:#fff}
+      display:flex;align-items:center;gap:6px;color:#0d1b3e;
+      background:#eff6ff;border-bottom:1px solid #dde2ef}
     .widget-header i{font-size:.72rem;opacity:.8}
-    .widget-body{padding:12px;min-height:180px;background:#111}
+    .widget-body{padding:12px;min-height:180px;background:#fff}
 
-    /* Widget header colours — dark tinted */
-    .widget-header{background:rgba(59,130,246,.2);border-bottom:1px solid rgba(255,255,255,.07)}
+    /* Widget header colour variants */
+    .widget-header[style*="8b5cf6"]{background:#f5f3ff!important;border-bottom:1px solid #ddd6fe!important;color:#6d28d9!important}
+    .widget-header[style*="10b981"]{background:#f0fdf4!important;border-bottom:1px solid #86efac!important;color:#059669!important}
+    .widget-header[style*="f59e0b"]{background:#fffbeb!important;border-bottom:1px solid #fde68a!important;color:#d97706!important}
+    .widget-header[style*="ef4444"]{background:#fff1f2!important;border-bottom:1px solid #fecdd3!important;color:#e11d48!important}
+    .widget-header[style*="14b8a6"]{background:#f0fdfa!important;border-bottom:1px solid #99f6e4!important;color:#0d9488!important}
+    .widget-header[style*="e67e22"]{background:#fff7ed!important;border-bottom:1px solid #fed7aa!important;color:#ea580c!important}
+    .widget-header[style*="0ea5e9"]{background:#f0f9ff!important;border-bottom:1px solid #bae6fd!important;color:#0284c7!important}
+    .widget-header[style*="6366f1"]{background:#eef2ff!important;border-bottom:1px solid #c7d2fe!important;color:#4f46e5!important}
 
     /* ── DESTINATION TAG ── */
     .destination-tag{display:inline-flex;align-items:center;gap:4px;
-      background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);
+      background:#f5f7fb;color:#6b7a99;
       padding:3px 8px;border-radius:20px;font-size:.68rem;font-weight:600;margin-bottom:8px;
-      border:1px solid rgba(255,255,255,.1)}
+      border:1px solid #dde2ef}
+
+    /* Destination tag colour variants */
+    .destination-tag[style*="#f3e8ff"]{background:#f5f3ff!important;color:#6d28d9!important;border-color:#ddd6fe!important}
+    .destination-tag[style*="#d1fae5"]{background:#f0fdf4!important;color:#059669!important;border-color:#86efac!important}
+    .destination-tag[style*="#fef3c7"]{background:#fffbeb!important;color:#d97706!important;border-color:#fde68a!important}
+    .destination-tag[style*="#fee2e2"]{background:#fff1f2!important;color:#e11d48!important;border-color:#fecdd3!important}
+    .destination-tag[style*="#ccfbf1"]{background:#f0fdfa!important;color:#0d9488!important;border-color:#99f6e4!important}
+    .destination-tag[style*="#e0f2fe"]{background:#f0f9ff!important;color:#0284c7!important;border-color:#bae6fd!important}
+    .destination-tag[style*="#ede9fe"]{background:#eef2ff!important;color:#4f46e5!important;border-color:#c7d2fe!important}
+    .destination-tag[style*="#fce7f3"]{background:#fdf2f8!important;color:#be185d!important;border-color:#fbcfe8!important}
 
     /* ── TOUR WIDGET CARDS ── */
-    .tour-widget-card{background:#111;border-radius:10px;border:1px solid rgba(255,255,255,.1);
-      padding:14px;margin-bottom:12px}
-    .tour-widget-card h3{color:#fff!important}
-    .tour-widget-card .font-semibold{color:#fff!important}
+    .tour-widget-card{background:#fff;border-radius:10px;border:1px solid #dde2ef;
+      padding:14px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+    .tour-widget-card h3{color:#0d1b3e!important}
+    .tour-widget-card .font-semibold{color:#0d1b3e!important}
 
     /* ── ACTIVITIES WIDGET ── */
-    .activities-widget-container{background:#111;border:1px solid rgba(255,255,255,.1);
-      border-radius:10px;padding:16px;margin-bottom:20px}
-    .activities-widget-container h2{color:#fff!important}
+    .activities-widget-container{background:#fff;border:1px solid #dde2ef;
+      border-radius:10px;padding:16px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+    .activities-widget-container h2{color:#0d1b3e!important}
 
     /* ── SECTION DIVIDER ── */
     section.mb-8{margin-bottom:20px!important;padding-bottom:20px;
-      border-bottom:1px solid rgba(255,255,255,.06)}
+      border-bottom:1px solid #e5e7eb}
     section.mb-8:last-child{border-bottom:none}
 
-    /* ── TEXT OVERRIDES ── */
-    .text-gray-800,.text-gray-700,.text-gray-600{color:#fff!important}
-    .text-gray-400,.text-gray-500{color:rgba(255,255,255,.5)!important}
-    h2,h3,h4{color:#fff!important}
-    .font-bold,.font-semibold{color:#fff!important}
+    /* ── TEXT — ALL LIGHT ── */
+    h2,h3,h4{color:#0d1b3e!important}
+    .font-bold,.font-semibold,.font-medium{color:#0d1b3e!important}
+    p{color:#6b7a99!important}
+    .text-gray-800,.text-gray-700,.text-gray-600{color:#0d1b3e!important}
+    .text-gray-400,.text-gray-500{color:#6b7a99!important}
+    .text-sm,.text-xs{color:#6b7a99!important}
 
-    /* Badge overrides */
-    .bg-purple-100{background:rgba(139,92,246,.15)!important}
-    .text-purple-700{color:#a78bfa!important}
-    .bg-blue-100{background:rgba(59,130,246,.15)!important}
-    .text-blue-700{color:#60a5fa!important}
-    .bg-amber-100{background:rgba(245,158,11,.15)!important}
-    .text-amber-700{color:#fbbf24!important}
-    .text-blue-600{color:#60a5fa!important}
-    .text-purple-600{color:#a78bfa!important}
-    .text-amber-600{color:#fbbf24!important}
+    /* Tailwind badge classes → light tinted */
+    .bg-purple-100{background:#f5f3ff!important}
+    .text-purple-700{color:#6d28d9!important}
+    .bg-blue-100{background:#eff6ff!important}
+    .text-blue-700{color:#1d4ed8!important}
+    .bg-amber-100{background:#fffbeb!important}
+    .text-amber-700{color:#b45309!important}
+    .text-blue-600{color:#2563eb!important}
+    .text-purple-600{color:#7c3aed!important}
+    .text-amber-600{color:#d97706!important}
 
-    /* Widget header colour variants */
-    .widget-header[style*="8b5cf6"]{background:rgba(139,92,246,.2)!important;border-bottom:1px solid rgba(139,92,246,.2)!important}
-    .widget-header[style*="10b981"]{background:rgba(16,185,129,.15)!important;border-bottom:1px solid rgba(16,185,129,.2)!important}
-    .widget-header[style*="f59e0b"]{background:rgba(245,158,11,.15)!important;border-bottom:1px solid rgba(245,158,11,.2)!important}
-    .widget-header[style*="ef4444"]{background:rgba(239,68,68,.12)!important;border-bottom:1px solid rgba(239,68,68,.2)!important}
-    .widget-header[style*="14b8a6"]{background:rgba(20,184,166,.12)!important;border-bottom:1px solid rgba(20,184,166,.2)!important}
-    .widget-header[style*="e67e22"]{background:rgba(230,126,34,.15)!important;border-bottom:1px solid rgba(230,126,34,.2)!important}
-    .widget-header[style*="0ea5e9"]{background:rgba(14,165,233,.15)!important;border-bottom:1px solid rgba(14,165,233,.2)!important}
-    .widget-header[style*="6366f1"]{background:rgba(99,102,241,.15)!important;border-bottom:1px solid rgba(99,102,241,.2)!important}
-
-    /* Destination tag colour variants */
-    .destination-tag[style*="#f3e8ff"]{background:rgba(139,92,246,.1)!important;color:#c4b5fd!important;border-color:rgba(139,92,246,.2)!important}
-    .destination-tag[style*="#d1fae5"]{background:rgba(16,185,129,.1)!important;color:#6ee7b7!important;border-color:rgba(16,185,129,.2)!important}
-    .destination-tag[style*="#fef3c7"]{background:rgba(245,158,11,.1)!important;color:#fcd34d!important;border-color:rgba(245,158,11,.2)!important}
-    .destination-tag[style*="#fee2e2"]{background:rgba(239,68,68,.1)!important;color:#fca5a5!important;border-color:rgba(239,68,68,.2)!important}
-    .destination-tag[style*="#ccfbf1"]{background:rgba(20,184,166,.1)!important;color:#5eead4!important;border-color:rgba(20,184,166,.2)!important}
-    .destination-tag[style*="#e0f2fe"]{background:rgba(14,165,233,.1)!important;color:#7dd3fc!important;border-color:rgba(14,165,233,.2)!important}
-    .destination-tag[style*="#ede9fe"]{background:rgba(99,102,241,.1)!important;color:#a5b4fc!important;border-color:rgba(99,102,241,.2)!important}
-    .destination-tag[style*="#fce7f3"]{background:rgba(236,72,153,.1)!important;color:#f9a8d4!important;border-color:rgba(236,72,153,.2)!important}
-
-    /* Widget body */
-    .widget-body{background:#111!important}
-
-    /* Grid */
-    .widget-grid,.grid{background:transparent!important}
+    /* Badge text in spans */
+    span[class*="text-"][class*="700"]{color:inherit!important}
 
     /* ── FOOTER ── */
-    footer{background:#000!important;border-top:1px solid rgba(255,255,255,.1)!important}
-    footer .bg-gray-800{background:#000!important}
-    footer .text-gray-400{color:rgba(255,255,255,.4)!important}
-    footer .text-white{color:#fff!important}
+    footer{background:#fff!important;border-top:1px solid #dde2ef!important}
+    footer .bg-gray-800{background:#fff!important}
+    footer .text-gray-400{color:#6b7a99!important}
+    footer .text-white{color:#0d1b3e!important}
+    footer *{color:#6b7a99}
 
-    /* GYG iframe background fix */
+    /* ── GYG WIDGETS ── */
     iframe{background:transparent;border:none}
+    .activities-widget-container a,.tour-widget-card a,.widget-body a{color:#2563eb!important}
+    .activities-widget-container *{color:#0d1b3e}
+    .tour-widget-card *{color:#0d1b3e}
+    .widget-body *{color:#0d1b3e}
+    .widget-header,.widget-header *{color:#0d1b3e}
+    .section-title,.section-title *{color:#0d1b3e!important}
 
-    /* GetYourGuide powered link */
-    .activities-widget-container a,
-    .tour-widget-card a,
-    .widget-body a{color:#60a5fa!important}
-  
-    /* ── FORCE ALL GREY TEXT WHITE ── */
-    *{color:inherit}
-    body,main,div,section,h1,h2,h3,h4,h5,h6,p,span,li,a{
-      --tw-text-opacity:1;
-    }
-    /* Tailwind grey classes → white */
-    .text-gray-100,.text-gray-200,.text-gray-300,
-    .text-gray-400,.text-gray-500,.text-gray-600,
-    .text-gray-700,.text-gray-800,.text-gray-900{color:#fff!important}
-    /* Any inline grey colors */
-    [style*="color: #"],[style*="color:#"],[style*="color: rgb"]{
-      color:#fff!important
-    }
-    /* Specific overrides */
-    .text-sm,.text-xs,.text-base,.text-lg{color:#fff!important}
-    p{color:rgba(255,255,255,.85)!important}
-    .font-semibold,.font-bold,.font-medium{color:#fff!important}
-    /* Section labels and small text */
-    span:not(.hero-tag):not(.destination-tag):not(.hero-eyebrow){color:#fff!important}
-    /* Keep coloured badges readable */
-    .bg-purple-100 span,.bg-blue-100 span,.bg-amber-100 span{color:inherit!important}
-    /* Activities widget text */
-    .activities-widget-container *{color:#fff!important}
-    .activities-widget-container a{color:#60a5fa!important}
-    /* Tour widget text */
-    .tour-widget-card *{color:#fff!important}
-    .tour-widget-card a{color:#60a5fa!important}
-    /* Widget body text */
-    .widget-body *{color:#fff!important}
-    .widget-body a{color:#60a5fa!important}
-    /* Widget header */
-    .widget-header,.widget-header *{color:#fff!important}
-    /* Section title */
-    .section-title,.section-title *{color:#fff!important}
-    /* Destination tags */
-    .destination-tag{color:rgba(255,255,255,.8)!important}
-    /* Footer */
-    footer *{color:rgba(255,255,255,.5)!important}
-    footer span.font-semibold,footer span[style*="font-weight:700"]{color:rgba(255,255,255,.8)!important}
-    /* GYG powered text */
-    .gyg-badge,.gyg-badge *{color:rgba(255,255,255,.5)!important}
-    .gyg-badge span{color:rgba(255,255,255,.7)!important}
-    /* Topbar */
-    .topbar-title{color:rgba(255,255,255,.6)!important}
-    /* Hero */
-    .hero-sub{color:rgba(255,255,255,.85)!important}
-    .hero-eyebrow{color:rgba(0,168,232,.9)!important}
-    .hero-tag{color:rgba(255,255,255,.8)!important}
+    /* ── GRID ── */
+    .widget-grid,.grid{background:transparent!important}
+</style>
 
-  </style>
 </head>
 <body>
 
